@@ -27,6 +27,7 @@ public class DataFileImporter {
         } catch (NullPointerException e){
             e.printStackTrace();
             System.out.println("Data file issue, please check provided file");
+            //Either non-existent or incorrect bounds provided
         }
     }
     public boolean filledArrayCheck(){
