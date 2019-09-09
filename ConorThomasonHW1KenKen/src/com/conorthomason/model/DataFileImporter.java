@@ -40,6 +40,7 @@ public class DataFileImporter {
         } catch (NullPointerException e){
             e.printStackTrace();
             System.out.println("Data file issue, not all spaces have been filled");
+            //Not all spaces are filled
         }
         return true;
     }
