@@ -2,6 +2,7 @@ package com.conorthomason.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -29,6 +30,8 @@ public class DataFileImporter {
             System.out.println("Data file issue, please check provided file");
             //Either non-existent or incorrect bounds provided
         }
+        printConstrainedArray();
+
     }
     public boolean filledArrayCheck(){
         try{
@@ -44,6 +47,10 @@ public class DataFileImporter {
             //Not all spaces are filled
         }
         return true;
+    }
+
+    public void printConstrainedArray(){
+        System.out.println(Arrays.deepToString(constrainedArray));
     }
 
 }
