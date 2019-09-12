@@ -2,15 +2,19 @@ package com.conorthomason.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DataFileImporter {
     private char constrainedArray[][];
     private int dataArray[][];
-    private HashMap<Character, Character> constraints;
+    private TreeMap<String, SolutionConstraint> constraints;
 
     public DataFileImporter() throws FileNotFoundException {
+        constraints = new TreeMap();
         importData();
     }
 
@@ -32,7 +36,23 @@ public class DataFileImporter {
             //Either non-existent or incorrect bounds provided
         }
         printConstrainedArray();
-
+        while (input.hasNext()){
+            String currentLine = input.next();
+            Pattern p = Pattern.compile("/^[A-Z]+$/i");
+            String key = p.matcher(currentLine).group();
+            p = Pattern.compile("^[0-9]*$");
+            int value = Integer.parseInt(p.matcher(currentLine).group());
+            p = Pattern.compile("([\\/\\+\\-\\*])");
+            char operator = p.matcher(currentLine).group().charAt(0);
+            SolutionConstraint currentConstraint = new SolutionConstraint(key, value, operator);
+            constraints.put(key, currentConstraint);
+        }
+        printTreeMap();
+    }
+    public void printTreeMap(){
+        for (Map.Entry<String, SolutionConstraint> entry : constraints.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
+        }
     }
     public boolean filledArrayCheck(){
         try{
