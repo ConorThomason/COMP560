@@ -40,7 +40,7 @@ public class DataFileImporter {
             String currentLine = input.next();
             Pattern pattern = Pattern.compile("[A-Z]+");
             Matcher matcher = pattern.matcher(currentLine);
-            System.out.println(matcher.find());
+            matcher.find();
             String key = matcher.group(0);
 
             pattern = Pattern.compile("[0-9]+");
@@ -82,7 +82,7 @@ public class DataFileImporter {
     public void printConstrainedArray() {
         for (int i = 0; i < constrainedArray.length; i++) {
             for (int j = 0; j < constrainedArray.length; j++) {
-                System.out.print(constrainedArray[i][j]);
+                System.out.print(constrainedArray[i][j] + "\t");
             }
             System.out.println();
         }
@@ -90,7 +90,7 @@ public class DataFileImporter {
     public void printDataArray() {
         for (int i = 0; i < dataArray.length; i++) {
             for (int j = 0; j < dataArray.length; j++) {
-                System.out.print(dataArray[i][j]);
+                System.out.print(dataArray[i][j] + "\t");
             }
             System.out.println();
         }
