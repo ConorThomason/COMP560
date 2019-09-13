@@ -85,4 +85,7 @@ public class DataFileImporter {
     public int [][] getDataArray(){
         return this.dataArray;
     }
+    public TreeMap<String, SolutionConstraint> getConstraints(){
+        return this.constraints;
+    }
 }
