@@ -38,12 +38,19 @@ public class DataFileImporter {
         printConstrainedArray();
         while (input.hasNext()){
             String currentLine = input.next();
-            Pattern p = Pattern.compile("/^[A-Z]+$/i");
-            String key = p.matcher(currentLine).group();
-            p = Pattern.compile("^[0-9]*$");
-            int value = Integer.parseInt(p.matcher(currentLine).group());
-            p = Pattern.compile("([\\/\\+\\-\\*])");
-            char operator = p.matcher(currentLine).group().charAt(0);
+            Pattern pattern = Pattern.compile("([A-Z]+)");
+            Matcher matcher = pattern.matcher(currentLine);
+            String key = matcher.group(0);
+
+            pattern = Pattern.compile("([0-9]*$)");
+            matcher = pattern.matcher(currentLine);
+
+            int value = Integer.parseInt(matcher.group(0));
+
+            pattern = Pattern.compile("([\\/\\+\\-\\*]\n])");
+            matcher = pattern.matcher(currentLine);
+
+            char operator = matcher.group(0).charAt(0);
             SolutionConstraint currentConstraint = new SolutionConstraint(key, value, operator);
             constraints.put(key, currentConstraint);
         }
