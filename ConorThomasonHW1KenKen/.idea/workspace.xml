@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="00f79fb6-7569-43e0-8d3c-bd437a28ebb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +104,7 @@
       <workItem from="1568061447868" duration="149000" />
       <workItem from="1568061619299" duration="2628000" />
       <workItem from="1568328232808" duration="6680000" />
-      <workItem from="1568392893661" duration="8187000" />
+      <workItem from="1568392893661" duration="10380000" />
     </task>
     <servers />
   </component>
@@ -127,5 +123,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
