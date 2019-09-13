@@ -8,6 +8,7 @@ public class Main {
 	    DataFileImporter importer = new DataFileImporter();
 	    KenKenSolver solver = new KenKenSolver(importer.getConstrainedArray(), importer.getDataArray(), importer.getConstraints());
 	    System.out.println();
-	    Utils.printDataArray(solver.simpleBacktrackSolve());
+	    Utils.printDataArray(solver.solveKenKen());
     }
+
 }
