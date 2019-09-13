@@ -23,41 +23,29 @@ public class KenKenSolver {
             return dataArray; //If it returns false, that means no solution was found.
     }
 
-    public int findValid(int row, int column) {
-        for (int i = 0; i < arraySize; i++) {
-            if (validityCheck(i + 1, row, column))
-                return i + 1;
+    public boolean simpleBacktrackSolve(int row, int column){
+        if (filledArray()){
+            return true;
         }
-        return 0;
+        else{
+            dataArray[row][column] = generatedValidValue(row, column);
+            return false;
+        }
     }
 
-    public boolean simpleBacktrackSolve(int row, int column) {
-        if (filledArray(row, column))
-            return true;
-        else {
-            int validValue = findValid(row, column);
-            if (validValue != 0) {
-                dataArray[row][column] = validValue;
-                if (row != arraySize)
-                    return simpleBacktrackSolve(++row, column);
-                else
-                    return simpleBacktrackSolve(row, ++column);
-            }
-            else {
-                return false;
-            }
-        }
-    }
-        public boolean filledArray(int r, int c) {
-            return (r == arraySize && c == arraySize) ? true : false;
-        }
-        public boolean validityCheck(int v, int r, int c){
-            //Checks if duplicate number is in row or column
-            for (int i = 0; i < dataArray.length; i++) {
-                if (v == dataArray[r][i] || v == dataArray[i][c]) {
+    public boolean filledArray(){
+        for (int i = 0; i < arraySize; i++){
+            for (int j = 0; j < arraySize; j++){
+                if (dataArray[i][j] == 0)
                     return false;
-                }
             }
-            return true;
+        }
+        return true;
+    }
+    public int generatedValidValue(int row, int column){
+        int valid = 1;
+        for (int i = 0; i < arraySize; i++){
+
         }
     }
+}
