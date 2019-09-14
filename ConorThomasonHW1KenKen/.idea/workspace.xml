@@ -15,6 +15,20 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -106,7 +120,7 @@
       <workItem from="1568061619299" duration="2628000" />
       <workItem from="1568328232808" duration="6680000" />
       <workItem from="1568392893661" duration="14304000" />
-      <workItem from="1568482426502" duration="2506000" />
+      <workItem from="1568482426502" duration="4935000" />
     </task>
     <servers />
   </component>

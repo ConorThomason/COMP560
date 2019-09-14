@@ -28,17 +28,23 @@ public class KenKenSolver {
             return true;
         }
         else{
-            int generatedValue = generatedValidValue(dataArray[row][column], row, column);
-            if (generatedValue != -1) {
-                dataArray[row][column] = generatedValue;
-                if (column == arraySize - 1)
-                    return simpleBacktrackSolve(++row, 0);
+            int possibleIterations = 0;
+            while (possibleIterations < 6){
+                int generatedValue = generatedValidValue(dataArray[row][column], row, column);
+                if (generatedValue != -1) {
+                    dataArray[row][column] = generatedValue;
+                    boolean result;
+                    if (column == arraySize - 1)
+                        result = simpleBacktrackSolve(++row, 0);
+                    else
+                        result = simpleBacktrackSolve(row, ++column);
+
+                }
                 else
-                    return simpleBacktrackSolve(row, ++column);
+                    return false;
             }
-            else
-                return false;
         }
+        return false;
     }
 
     public boolean filledArray(){
