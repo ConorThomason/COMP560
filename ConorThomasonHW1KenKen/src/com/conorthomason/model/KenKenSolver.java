@@ -28,18 +28,29 @@ public class KenKenSolver {
             return true;
         }
         else{
-            int possibleIterations = 0;
-            while (possibleIterations < 6){
+            int possibleIterations = 6;
+            while (possibleIterations <= 6){
+
+                //Limiting the possible iterations, for repeated generated values
+
+                //Generate a value, takes into account whatever is in the current index
                 int generatedValue = generatedValidValue(dataArray[row][column], row, column);
+
+                //If it's -1, there are no valid values.
                 if (generatedValue != -1) {
+                    possibleIterations++;
                     dataArray[row][column] = generatedValue;
                     boolean result;
                     if (column == arraySize - 1)
                         result = simpleBacktrackSolve(++row, 0);
                     else
                         result = simpleBacktrackSolve(row, ++column);
-
+                    if (result)
+                        continue;
+                    else
+                        return true;
                 }
+                //Returning false SHOULD reset the previous value, and continue attempts. Will work up until it works.
                 else
                     return false;
             }
