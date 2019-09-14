@@ -54,7 +54,6 @@ public class KenKenSolver {
         while (currentValue != 6){
             if (validValue(++currentValue, row, column))
                 return currentValue;
-            currentValue++;
         }
         return -1;
     }
