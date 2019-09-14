@@ -120,7 +120,8 @@
       <workItem from="1568061619299" duration="2628000" />
       <workItem from="1568328232808" duration="6680000" />
       <workItem from="1568392893661" duration="14304000" />
-      <workItem from="1568482426502" duration="8334000" />
+      <workItem from="1568482426502" duration="8362000" />
+      <workItem from="1568492720260" duration="3276000" />
     </task>
     <servers />
   </component>
@@ -139,5 +140,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((int[][])((KenKenSolver)this).dataArray)[1]" custom="int[][],com.conorthomason.model.KenKenSolver" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
