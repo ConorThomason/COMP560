@@ -28,8 +28,16 @@ public class KenKenSolver {
             return true;
         }
         else{
-            dataArray[row][column] = generatedValidValue(row, column);
-            return false;
+            int generatedValue = generatedValidValue(dataArray[row][column], row, column);
+            if (generatedValue != -1) {
+                dataArray[row][column] = generatedValue;
+                if (column == arraySize - 1)
+                    return simpleBacktrackSolve(++row, 0);
+                else
+                    return simpleBacktrackSolve(row, ++column);
+            }
+            else
+                return false;
         }
     }
 
@@ -42,10 +50,20 @@ public class KenKenSolver {
         }
         return true;
     }
-    public int generatedValidValue(int row, int column){
-        int valid = 1;
-        for (int i = 0; i < arraySize; i++){
-
+    public int generatedValidValue(int currentValue, int row, int column){
+        while (currentValue != 6){
+            if (validValue(++currentValue, row, column))
+                return currentValue;
+            currentValue++;
         }
+        return -1;
+    }
+    public boolean validValue(int value, int row, int column){
+        for (int i = 0; i < dataArray.length; i++){
+            if (dataArray[row][i] == value || dataArray[i][column] == value){
+                return false;
+            }
+        }
+        return true;
     }
 }
