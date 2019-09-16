@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 	    DataFileImporter importer = new DataFileImporter();
-	    KenKenSolver solver = new KenKenSolver(importer.getConstrainedArray(), importer.getDataArray(), importer.getConstraints());
+	    KenKenSolver solver = new KenKenSolver(importer.getConstrainedArray(), importer.getConstraints());
 	    System.out.println();
-	    Utils.printDataArray(solver.solveKenKen());
+	    Utils.printConstrainedArray(solver.solveKenKen());
     }
 
 }

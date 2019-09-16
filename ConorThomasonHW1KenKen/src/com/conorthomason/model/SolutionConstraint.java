@@ -1,21 +1,21 @@
 package com.conorthomason.model;
 
 public class SolutionConstraint {
-    private String key;
+    private char key;
     private int value;
     private char operator;
 
-    public SolutionConstraint(String key, int value, char operator){
+    public SolutionConstraint(char key, int value, char operator){
         this.key = key;
         this.value = value;
         this.operator = operator;
     }
 
-    public String getKey() {
+    public char getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(char key) {
         this.key = key;
     }
 
