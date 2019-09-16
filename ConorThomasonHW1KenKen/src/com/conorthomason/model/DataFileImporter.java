@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DataFileImporter {
-    private char constrainedArray[][];
+    private ConstraintCell constrainedArray[][];
     private int dataArray[][];
     private TreeMap<String, SolutionConstraint> constraints;
 
@@ -22,12 +22,21 @@ public class DataFileImporter {
         Scanner input = new Scanner(new File("src/Data"));
         int arraySize = Integer.parseInt(input.nextLine());
         dataArray = new int[arraySize][arraySize];
-        constrainedArray = new char[arraySize][arraySize];
+        constrainedArray = new ConstraintCell[arraySize][arraySize];
         try {
             for (int i = 0; i < arraySize; i++) {
                 String currentLine = input.next();
                 for (int j = 0; j < arraySize; j++) {
-                    constrainedArray[i][j] = currentLine.charAt(j);
+                    ConstraintCell newCell = new ConstraintCell(currentLine.charAt(j));
+                    if (adjacentCellCheck(i+1, j))
+                        newCell.setRightCell(constrainedArray[i+1][j]);
+                    if (adjacentCellCheck(i - 1, j))
+                        newCell.setLeftCell(constrainedArray[i-1][j]);
+                    if (adjacentCellCheck(i, j+1))
+                        newCell.setLowerCell(constrainedArray[i][j+1]);
+                    if (adjacentCellCheck(i, j-1))
+                        newCell.setUpperCell(constrainedArray[i][j-1]);
+                    constrainedArray[i][j] = newCell;
                 }
             }
         } catch (NullPointerException e){
@@ -58,6 +67,14 @@ public class DataFileImporter {
         }
         printTreeMap();
     }
+    public boolean adjacentCellCheck(int i, int j){
+        try{
+
+        } catch (NullPointerException e){
+            //nop
+            //This just means that the adjacent cell doesn't exist, completely expected for the edges of the array.
+        }
+    }
     public void printTreeMap(){
         for (Map.Entry<String, SolutionConstraint> entry : constraints.entrySet()) {
             System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
@@ -79,7 +96,7 @@ public class DataFileImporter {
         return true;
     }
 
-    public char[][] getConstrainedArray(){
+    public ConstraintCell[][] getConstrainedArray(){
         return this.constrainedArray;
     }
     public int [][] getDataArray(){

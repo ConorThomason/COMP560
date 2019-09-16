@@ -46,13 +46,47 @@ public class KenKenSolver {
         for (int attempt = 1; attempt <= arraySize; attempt++){
             if (safeValueCheck(attempt, row, column)){
                 dataArray[row][column] = attempt;
-                if (simpleBacktrackSolve())
+                if (!kenKenCheck()) {
+
+                }
+                else if (simpleBacktrackSolve())
                     return true;
                 else
                     dataArray[row][column] = 0;
             }
         }
         return false;
+    }
+    //Check to see if any full data blocks are filled. If they are, check if valid. If not, report false.
+    //I need to see if there are any blocks that are filled. I need to find these blocks, check each element
+    //of said blocks, and check they are nonzero. If they ARE nonzero, I need to check if they
+    //match the constraints of the provided problem. If they do, great, return true. If not, return false,
+    //and it should return to the algorithm checking them and attempt a different combination.
+    public boolean kenKenCheck(char key){
+        if (kenKenFilled(key)) {
+
+        }
+
+        return true;
+    }
+    public boolean kenKenFilled(char key){
+        //Introducing a path-finding search method because my initial setup was questionable. This should
+        //make up for efficiency... ideally.
+        int foundI;
+        int foundJ;
+        for (int i = 0; i < arraySize; i++){
+            for (int j = 0; j < arraySize; j++){
+                if (constrainedArray[i][j] == key){
+                    foundI = i;
+                    foundJ = j;
+                }
+                break;
+            }
+        }
+
+        while (dataArray[i][j] != 0){
+
+        }
     }
 
     public boolean safeValueCheck(int value, int row, int column){
