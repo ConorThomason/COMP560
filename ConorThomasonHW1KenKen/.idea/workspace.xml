@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="00f79fb6-7569-43e0-8d3c-bd437a28ebb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/SolutionConstraint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/SolutionConstraint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/SolutionConstraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/SolutionConstraint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +66,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
@@ -133,7 +127,8 @@
       <workItem from="1568492720260" duration="3661000" />
       <workItem from="1568516386393" duration="77000" />
       <workItem from="1568594214904" duration="1368000" />
-      <workItem from="1568599674708" duration="11351000" />
+      <workItem from="1568599674708" duration="11951000" />
+      <workItem from="1568676005227" duration="5956000" />
     </task>
     <servers />
   </component>
@@ -154,6 +149,20 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="((int[][])((KenKenSolver)this).dataArray)[1]" custom="int[][],com.conorthomason.model.KenKenSolver" />

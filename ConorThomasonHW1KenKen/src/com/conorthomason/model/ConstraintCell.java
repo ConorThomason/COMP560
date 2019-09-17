@@ -11,6 +11,8 @@ public class ConstraintCell {
     public ConstraintCell (char cellKey){
         this.cellValue = 0;
         this.cellKey = cellKey;
+
+        //TODO System.out.println("Created cell with key " + cellKey);
     }
 
     public char getCellKey(){

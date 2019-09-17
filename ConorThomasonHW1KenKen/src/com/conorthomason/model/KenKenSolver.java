@@ -15,10 +15,14 @@ public class KenKenSolver {
     }
 
     public ConstraintCell[][] solveKenKen() {
-        if (simpleBacktrackSolve())
+        if (simpleBacktrackSolve()) {
+            System.out.println("Full return");
             return constrainedArray;
-        else
+        }
+        else {
+            System.out.println("No complete solution found");
             return constrainedArray; //If it returns false, that means no solution was found.
+        }
     }
 
     public boolean simpleBacktrackSolve(){
@@ -44,16 +48,12 @@ public class KenKenSolver {
         for (int attempt = 1; attempt <= arraySize; attempt++){
             if (safeValueCheck(attempt, row, column)){
                 constrainedArray[row][column].setCellValue(attempt);
-
-                if (!kenKenCheck(constrainedArray[row][column].getCellKey())) {
-                    return false;
-                }
-
                 if (simpleBacktrackSolve())
-                    return true;
-                else
-                    constrainedArray[row][column].setCellValue(0);
+                    if (kenKenCheck(constrainedArray[row][column].getCellKey()))
+                        return true;
             }
+            else
+                constrainedArray[row][column].setCellValue(0);
         }
         return false;
     }
@@ -69,7 +69,7 @@ public class KenKenSolver {
             //Will need to iterate through for operation checking later anyway, so it's not significantly detrimental.
             //Collects all the values, compiles them into an easily iterable list.
             ArrayList<Integer> workingList = new ArrayList<Integer>();
-            valuedCellDive(cellSearch(key), workingList);
+            workingList = valuedCellDive(cellSearch(key), workingList);
 
             int workingValue = 0;
             char operator = constraints.get(key).getOperator();
@@ -99,9 +99,10 @@ public class KenKenSolver {
                 return false;
             //If it is true, then it will drop out of the if statement anyway.
         }
+        return true;
         //Want to return true so that it continues the run, despite the fact there are 0s. Otherwise it will constantly
         //erase work already done.
-        return true;
+
     }
 
     //Returns first found instance of a cell of a key.
@@ -130,6 +131,7 @@ public class KenKenSolver {
         //Introducing a pseudo-path-finding search method because my initial setup was questionable. This should
         //make up for efficiency... ideally.
         ConstraintCell currentCell = cellSearch(key);
+        System.out.println(currentCell.getCellKey());
         return cellDive(currentCell);
     }
     public ArrayList<Integer> valuedCellDive(ConstraintCell cell, ArrayList<Integer> workingList){
@@ -161,6 +163,8 @@ public class KenKenSolver {
         }
     }
     private boolean safeValueCheck(int value, int row, int column){
+
+        //Checks the row and column of the current element being expected. If the value isn't found, it's safe.
         for (int i = 0; i < arraySize; i++){
             if (constrainedArray[row][i].getCellValue() == value){
                 return false;
