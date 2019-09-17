@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class DataFileImporter {
     private ConstraintCell constrainedArray[][];
-    private TreeMap<String, SolutionConstraint> constraints;
+    private TreeMap<Character, SolutionConstraint> constraints;
 
     public DataFileImporter() throws FileNotFoundException {
         constraints = new TreeMap();
@@ -49,7 +49,7 @@ public class DataFileImporter {
             Pattern pattern = Pattern.compile("[A-Z]+");
             Matcher matcher = pattern.matcher(currentLine);
             matcher.find();
-            String key = matcher.group(0);
+            char key = matcher.group(0).charAt(0);
 
             pattern = Pattern.compile("[0-9]+");
             matcher = pattern.matcher(currentLine);
@@ -79,7 +79,7 @@ public class DataFileImporter {
         }
     }
     public void printTreeMap(){
-        for (Map.Entry<String, SolutionConstraint> entry : constraints.entrySet()) {
+        for (Map.Entry<Character, SolutionConstraint> entry : constraints.entrySet()) {
             System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
         }
     }
@@ -102,7 +102,7 @@ public class DataFileImporter {
     public ConstraintCell[][] getConstrainedArray(){
         return this.constrainedArray;
     }
-    public TreeMap<String, SolutionConstraint> getConstraints(){
+    public TreeMap<Character, SolutionConstraint> getConstraints(){
         return this.constraints;
     }
 }
