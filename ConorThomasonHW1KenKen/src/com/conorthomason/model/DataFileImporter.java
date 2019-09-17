@@ -2,6 +2,7 @@ package com.conorthomason.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -10,7 +11,6 @@ import java.util.regex.Pattern;
 
 public class DataFileImporter {
     private ConstraintCell constrainedArray[][];
-    private int dataArray[][];
     private TreeMap<String, SolutionConstraint> constraints;
 
     public DataFileImporter() throws FileNotFoundException {
@@ -21,7 +21,6 @@ public class DataFileImporter {
     public void importData() throws FileNotFoundException {
         Scanner input = new Scanner(new File("src/Data"));
         int arraySize = Integer.parseInt(input.nextLine());
-        dataArray = new int[arraySize][arraySize];
         constrainedArray = new ConstraintCell[arraySize][arraySize];
         try {
             for (int i = 0; i < arraySize; i++) {
@@ -69,10 +68,14 @@ public class DataFileImporter {
     }
     public boolean adjacentCellCheck(int i, int j){
         try{
-
+            if (constrainedArray[i][j] != null)
+                return true;
+            else
+                return false;
         } catch (NullPointerException e){
-            //nop
-            //This just means that the adjacent cell doesn't exist, completely expected for the edges of the array.
+            return false;
+        } catch (ArrayIndexOutOfBoundsException f){
+            return false;
         }
     }
     public void printTreeMap(){
@@ -82,9 +85,9 @@ public class DataFileImporter {
     }
     public boolean filledArrayCheck(){
         try{
-            for (int i = 0; i < dataArray.length; i++){
-                for (int j = 0; j < dataArray.length; j++){
-                    if (dataArray[i][j] == 0)
+            for (int i = 0; i < constrainedArray.length; i++){
+                for (int j = 0; j < constrainedArray.length; j++){
+                    if (constrainedArray[i][j].getCellValue() == 0)
                         return false;
                 }
             }
@@ -98,9 +101,6 @@ public class DataFileImporter {
 
     public ConstraintCell[][] getConstrainedArray(){
         return this.constrainedArray;
-    }
-    public int [][] getDataArray(){
-        return this.dataArray;
     }
     public TreeMap<String, SolutionConstraint> getConstraints(){
         return this.constraints;
