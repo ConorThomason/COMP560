@@ -10,10 +10,10 @@ public class Utils {
         }
         System.out.println();
     }
-    public static void printDataArray(int[][] dataArray) {
-        for (int i = 0; i < dataArray.length; i++) {
-            for (int j = 0; j < dataArray.length; j++) {
-                System.out.print(dataArray[i][j] + "\t");
+    public static void printConstrainedKeys(ConstraintCell[][] constraintArray) {
+        for (int i = 0; i < constraintArray.length; i++) {
+            for (int j = 0; j < constraintArray.length; j++) {
+                System.out.print(constraintArray[i][j].getCellKey() + "\t");
             }
             System.out.println();
         }

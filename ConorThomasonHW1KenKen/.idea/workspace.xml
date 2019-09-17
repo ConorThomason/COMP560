@@ -5,10 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/SolutionConstraint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/SolutionConstraint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/SolutionConstraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/SolutionConstraint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +73,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
@@ -132,6 +135,7 @@
       <workItem from="1568516386393" duration="77000" />
       <workItem from="1568594214904" duration="1368000" />
       <workItem from="1568599674708" duration="11351000" />
+      <workItem from="1568730959140" duration="4960000" />
     </task>
     <servers />
   </component>
@@ -150,6 +154,24 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="constrainedArray[i][j].cellKey" />
+        <watch expression="currentChar" />
+        <watch expression="constrainedArray[i][j].cellValue" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ConorThomasonHW1KenKen$Main.ic" NAME="Main Coverage Results" MODIFIED="1568694125015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

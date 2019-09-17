@@ -3,6 +3,7 @@ package com.conorthomason.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -11,8 +12,12 @@ import java.util.regex.Pattern;
 
 public class DataFileImporter {
     private ConstraintCell constrainedArray[][];
+    private int[] constraintTally = new int[26];
     private TreeMap<Character, SolutionConstraint> constraints;
 
+    public int[] getConstraintTally(){
+        return constraintTally;
+    }
     public DataFileImporter() throws FileNotFoundException {
         constraints = new TreeMap();
         importData();
@@ -36,6 +41,7 @@ public class DataFileImporter {
                     if (adjacentCellCheck(i, j-1))
                         newCell.setUpperCell(constrainedArray[i][j-1]);
                     constrainedArray[i][j] = newCell;
+                    constraintTally[(int)newCell.getCellKey() - 65]++;
                 }
             }
         } catch (NullPointerException e){
@@ -43,26 +49,29 @@ public class DataFileImporter {
             System.out.println("Data file issue, please check provided file");
             //Either non-existent or incorrect bounds provided
         }
-        Utils.printConstrainedArray(constrainedArray);
-        while (input.hasNext()){
-            String currentLine = input.next();
-            Pattern pattern = Pattern.compile("[A-Z]+");
-            Matcher matcher = pattern.matcher(currentLine);
-            matcher.find();
-            char key = matcher.group(0).charAt(0);
+        try {
+            Utils.printConstrainedKeys(constrainedArray);
+            while (input.hasNext()) {
+                String currentLine = input.next();
+                Pattern pattern = Pattern.compile("[A-Z]+");
+                Matcher matcher = pattern.matcher(currentLine);
+                matcher.find();
+                char key = matcher.group(0).charAt(0);
 
-            pattern = Pattern.compile("[0-9]+");
-            matcher = pattern.matcher(currentLine);
-            matcher.find();
-            int value = Integer.parseInt(matcher.group(0));
+                pattern = Pattern.compile("[0-9]+");
+                matcher = pattern.matcher(currentLine);
+                matcher.find();
+                int value = Integer.parseInt(matcher.group(0));
 
-            pattern = Pattern.compile("[\\/\\+\\-\\*]");
-            matcher = pattern.matcher(currentLine);
-            matcher.find();
-            char operator = matcher.group(0).charAt(0);
+                pattern = Pattern.compile("[\\/\\+\\-\\*]");
+                matcher = pattern.matcher(currentLine);
+                matcher.find();
+                char operator = matcher.group(0).charAt(0);
 
-            SolutionConstraint currentConstraint = new SolutionConstraint(key, value, operator);
-            constraints.put(key, currentConstraint);
+                SolutionConstraint currentConstraint = new SolutionConstraint(key, value, operator);
+                constraints.put(key, currentConstraint);
+            }
+        } catch (IndexOutOfBoundsException e){
         }
         printTreeMap();
     }

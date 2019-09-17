@@ -7,10 +7,12 @@ public class KenKenSolver {
     private ConstraintCell constrainedArray[][];
     private int arraySize;
     private TreeMap<Character, SolutionConstraint> constraints;
+    private int[] constraintTally;
 
-    public KenKenSolver(ConstraintCell constrainedArray[][], TreeMap constraints) {
+    public KenKenSolver(ConstraintCell constrainedArray[][], TreeMap constraints, int[] constraintTally) {
         this.constrainedArray = constrainedArray;
         this.constraints = constraints;
+        this.constraintTally = constraintTally;
         arraySize = constrainedArray.length;
     }
 
@@ -66,62 +68,27 @@ public class KenKenSolver {
 
     private boolean kenKenRegionFilled(int row, int column){
         char currentChar = constrainedArray[row][column].getCellKey();
+        int[] constraintCount = new int[26];
         for (int i = 0; i < arraySize; i++){
             for (int j = 0; j < arraySize; j++){
-                if (constrainedArray[i][j].getCellKey() == currentChar)
+                if (constrainedArray[i][j].getCellKey() == currentChar) {
+                    constraintCount[(int)currentChar - 65]++;
                     if (constrainedArray[i][j].getCellValue() == 0)
                         return false;
-            }
-        }
-        return true;
-    }
-    private boolean safeKenKen(int row, int column, int value){
-        char currentChar = constrainedArray[row][column].getCellKey();
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < arraySize; i++){
-            for (int j = 0; j < arraySize; j++){
-                if (constrainedArray[i][j].getCellKey() == currentChar)
-                        list.add(constrainedArray[i][j].getCellValue());
-            }
-        }
-        try {
-            int workingValue = list.get(0);
-            switch (constraints.get(constrainedArray[row][column].getCellKey()).getOperator()) {
-                case '+':
-                    for (int i = 1; i < list.size(); i++) {
-                        workingValue = workingValue + list.get(i);
+                    else if (constraintCount[(int)currentChar-65] == constraintTally[(int)currentChar - 65]){
+                        System.out.println("Region " + currentChar + " is filled");
+                        return true;
                     }
-                    break;
-                case '-':
-                    for (int i = 1; i < list.size(); i++) {
-                        workingValue = workingValue - list.get(i);
-                    }
-                    break;
-                case '/':
-                    for (int i = 1; i < list.size(); i++) {
-                        workingValue = workingValue / list.get(i);
-                    }
-                    break;
-                case '*':
-                    for (int i = 1; i < list.size(); i++) {
-                        workingValue = workingValue * list.get(i);
-                    }
-                    break;
-            }
-            if (workingValue != constraints.get(constrainedArray[row][column].getCellKey()).getValue())
-                return false;
 
-        } catch (IndexOutOfBoundsException e) {
-            return true;
+                }
+            }
         }
         return true;
     }
     private boolean safeValueCheck(int value, int row, int column) {
+        kenKenRegionFilled(row, column);
         if (safeRow(row, value) && safeColumn(column, value))
-            if (kenKenRegionFilled(row, column))
-                return safeKenKen(row, column, value);
-            else
-                return true;
+            return true;
         return false;
 
     }
