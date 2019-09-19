@@ -6,11 +6,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +133,8 @@
       <workItem from="1568516386393" duration="77000" />
       <workItem from="1568594214904" duration="1368000" />
       <workItem from="1568599674708" duration="11351000" />
-      <workItem from="1568730959140" duration="4960000" />
+      <workItem from="1568730959140" duration="4993000" />
+      <workItem from="1568858657389" duration="2712000" />
     </task>
     <servers />
   </component>
@@ -156,15 +155,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="constrainedArray[i][j].cellKey" />

@@ -12,17 +12,18 @@ import java.util.regex.Pattern;
 
 public class DataFileImporter {
     private ConstraintCell constrainedArray[][];
-    private int[] constraintTally = new int[26];
     private TreeMap<Character, SolutionConstraint> constraints;
+    private TreeMap<Character, Cage> cages;
 
-    public int[] getConstraintTally(){
-        return constraintTally;
-    }
     public DataFileImporter() throws FileNotFoundException {
         constraints = new TreeMap();
+        cages = new TreeMap();
         importData();
     }
 
+    public TreeMap<Character, Cage> getCages(){
+        return this.cages;
+    }
     public void importData() throws FileNotFoundException {
         Scanner input = new Scanner(new File("src/Data"));
         int arraySize = Integer.parseInt(input.nextLine());
@@ -32,6 +33,9 @@ public class DataFileImporter {
                 String currentLine = input.next();
                 for (int j = 0; j < arraySize; j++) {
                     ConstraintCell newCell = new ConstraintCell(currentLine.charAt(j));
+                    if (cages.get(newCell.getCellKey()) == null)
+                        cages.put(newCell.getCellKey(), new Cage(newCell.getCellKey()));
+                    cages.get(newCell.getCellKey()).addToCage(newCell);
                     if (adjacentCellCheck(i+1, j))
                         newCell.setRightCell(constrainedArray[i+1][j]);
                     if (adjacentCellCheck(i - 1, j))
@@ -41,7 +45,6 @@ public class DataFileImporter {
                     if (adjacentCellCheck(i, j-1))
                         newCell.setUpperCell(constrainedArray[i][j-1]);
                     constrainedArray[i][j] = newCell;
-                    constraintTally[(int)newCell.getCellKey() - 65]++;
                 }
             }
         } catch (NullPointerException e){

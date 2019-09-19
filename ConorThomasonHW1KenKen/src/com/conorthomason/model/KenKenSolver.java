@@ -7,12 +7,12 @@ public class KenKenSolver {
     private ConstraintCell constrainedArray[][];
     private int arraySize;
     private TreeMap<Character, SolutionConstraint> constraints;
-    private int[] constraintTally;
+    private TreeMap<Character, Cage> cages;
 
-    public KenKenSolver(ConstraintCell constrainedArray[][], TreeMap constraints, int[] constraintTally) {
+    public KenKenSolver(ConstraintCell constrainedArray[][], TreeMap constraints, TreeMap cages) {
         this.constrainedArray = constrainedArray;
         this.constraints = constraints;
-        this.constraintTally = constraintTally;
+        this.cages = cages;
         arraySize = constrainedArray.length;
     }
 
@@ -67,30 +67,61 @@ public class KenKenSolver {
     }
 
     private boolean kenKenRegionFilled(int row, int column){
-        char currentChar = constrainedArray[row][column].getCellKey();
-        int[] constraintCount = new int[26];
-        for (int i = 0; i < arraySize; i++){
-            for (int j = 0; j < arraySize; j++){
-                if (constrainedArray[i][j].getCellKey() == currentChar) {
-                    constraintCount[(int)currentChar - 65]++;
-                    if (constrainedArray[i][j].getCellValue() == 0)
-                        return false;
-                    else if (constraintCount[(int)currentChar-65] == constraintTally[(int)currentChar - 65]){
-                        System.out.println("Region " + currentChar + " is filled");
-                        return true;
-                    }
-
-                }
-            }
-        }
-        return true;
+        char constraintChar = constrainedArray[row][column].getCellKey();
+        Cage constraintCage = cages.get(constraintChar);
+        return constraintCage.filledCage();
     }
     private boolean safeValueCheck(int value, int row, int column) {
-        kenKenRegionFilled(row, column);
+        if (kenKenRegionFilled(row, column))
+            if (safeRow(row, value) && safeColumn(column, value))
+                if (kenKenValid(row, column))
+                    return true;
         if (safeRow(row, value) && safeColumn(column, value))
             return true;
         return false;
 
+    }
+
+    public boolean kenKenValid(int row, int column){
+        Cage constraintCage = cages.get(constrainedArray[row][column].getCellKey());
+        char operator = constraints.get(constrainedArray[row][column].getCellKey()).getOperator();
+        int workingValue = 0;
+        int secondaryValue = 0;
+        int index0 = constraintCage.getCellIndex(0).getCellValue();
+        int index1 = constraintCage.getCellIndex(1).getCellValue();
+        switch(operator){
+            case '+':
+                for (int i = 0; i < constraintCage.getCageSize(); i++){
+                    workingValue += constraintCage.getCellIndex(i).getCellValue();
+                }
+                break;
+            case '*':
+                for (int i = 0; i < constraintCage.getCageSize(); i++){
+                    workingValue *= constraintCage.getCellIndex(i).getCellValue();
+                }
+                break;
+            case '-':
+                workingValue = index0 - index1;
+                secondaryValue = index1 - index0;
+                break;
+            case '/':
+                if (constraintCage.getCellIndex(0).getCellValue() == 0) {
+                    workingValue = 0;
+                    break;
+                } else {
+                    if (index0 >= index1){
+                        workingValue = index0 / index1;
+                    } else
+                        workingValue = index1 / index0;
+                }
+                break;
+        }
+        if (workingValue == constraints.get(constrainedArray[row][column].getCellKey()).getValue())
+            return true;
+        else
+            if (secondaryValue == constraints.get(constrainedArray[row][column].getCellKey()).getValue())
+                return true;
+        return false;
     }
 
 }
