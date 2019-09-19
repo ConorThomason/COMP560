@@ -18,11 +18,11 @@ public class KenKenSolver {
 
     public ConstraintCell[][] solveKenKen() {
         if (simpleBacktrackSolve()) {
-            System.out.println("Full Solution");
+            System.out.println("\nFull Solution");
             return constrainedArray;
         }
         else {
-            System.out.println("Incomplete Solution/No Solution");
+            System.out.println("\nIncomplete Solution/No Solution");
             return constrainedArray; //If it returns false, that means no solution was found.
         }
     }
@@ -72,10 +72,6 @@ public class KenKenSolver {
         return constraintCage.filledCage();
     }
     private boolean safeValueCheck(int value, int row, int column) {
-        if (kenKenRegionFilled(row, column))
-            if (safeRow(row, value) && safeColumn(column, value))
-                if (kenKenValid(row, column))
-                    return true;
         if (safeRow(row, value) && safeColumn(column, value))
             return true;
         return false;
@@ -88,7 +84,7 @@ public class KenKenSolver {
         int workingValue = 0;
         int secondaryValue = 0;
         int index0 = constraintCage.getCellIndex(0).getCellValue();
-        int index1 = constraintCage.getCellIndex(1).getCellValue();
+
         switch(operator){
             case '+':
                 for (int i = 0; i < constraintCage.getCageSize(); i++){
@@ -101,10 +97,12 @@ public class KenKenSolver {
                 }
                 break;
             case '-':
+                int index1 = constraintCage.getCellIndex(1).getCellValue();
                 workingValue = index0 - index1;
                 secondaryValue = index1 - index0;
                 break;
             case '/':
+                index1 = constraintCage.getCellIndex(1).getCellValue();
                 if (constraintCage.getCellIndex(0).getCellValue() == 0) {
                     workingValue = 0;
                     break;
@@ -116,12 +114,13 @@ public class KenKenSolver {
                 }
                 break;
         }
-        if (workingValue == constraints.get(constrainedArray[row][column].getCellKey()).getValue())
+        int comparator = constraints.get(constrainedArray[row][column].getCellKey()).getValue();
+        if (workingValue == comparator)
+            return true;
+        else if (secondaryValue == comparator)
             return true;
         else
-            if (secondaryValue == constraints.get(constrainedArray[row][column].getCellKey()).getValue())
-                return true;
-        return false;
+            return false;
     }
 
 }
