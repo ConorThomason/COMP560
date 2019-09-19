@@ -56,7 +56,7 @@ public class DataFileImporter {
             Utils.printConstrainedKeys(constrainedArray);
             while (input.hasNext()) {
                 String currentLine = input.next();
-                Pattern pattern = Pattern.compile("[A-Z]+");
+                Pattern pattern = Pattern.compile("(?i)[A-Z]+");
                 Matcher matcher = pattern.matcher(currentLine);
                 matcher.find();
                 char key = matcher.group(0).charAt(0);
