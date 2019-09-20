@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="00f79fb6-7569-43e0-8d3c-bd437a28ebb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/Data" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/Data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Cage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Cage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Cage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Cage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +70,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -149,7 +149,10 @@
       <workItem from="1568599674708" duration="11351000" />
       <workItem from="1568730959140" duration="4993000" />
       <workItem from="1568858657389" duration="12596000" />
-      <workItem from="1568904937102" duration="1083000" />
+      <workItem from="1568904937102" duration="1140000" />
+      <workItem from="1568939703732" duration="1532000" />
+      <workItem from="1568941858995" duration="4791000" />
+      <workItem from="1568947372064" duration="2802000" />
     </task>
     <servers />
   </component>

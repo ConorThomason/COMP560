@@ -8,6 +8,9 @@ public class KenKenSolver {
     private int arraySize;
     private TreeMap<Character, SolutionConstraint> constraints;
     private TreeMap<Character, Cage> cages;
+    private static int simpleBacktrackCounter = 0;
+    private static int improvedBacktrackCounter = 0;
+    private static int localCounter = 0;
 
     public KenKenSolver(ConstraintCell constrainedArray[][], TreeMap constraints, TreeMap cages) {
         this.constrainedArray = constrainedArray;
@@ -21,8 +24,19 @@ public class KenKenSolver {
     }
 
     public ConstraintCell[][] solveKenKen() {
-        if (simpleBacktrackSolve()) {
+        /*if (simpleBacktrackSolve()) {
             System.out.println("\nFull Solution");
+            System.out.println(simpleBacktrackCounter);
+        }
+        else {
+            System.out.println("\nIncomplete Solution/No Solution");
+            return constrainedArray; //If it returns false, that means no solution was found.
+        }
+         */
+
+        if (improvedBacktrackSolve()) {
+            System.out.println("\nFull Solution");
+            System.out.println(improvedBacktrackCounter);
             return constrainedArray;
         }
         else {
@@ -31,7 +45,75 @@ public class KenKenSolver {
         }
     }
 
+    public boolean improvedBacktrackSolve(){
+        /*
+        The main premise here is by taking advantage of numerical information; Using a method such as finding the GCD
+        can reduce the number of possibilities left in a cell; therefore reducing the iterations somewhat.
+        (Will likely vary depending on the puzzle provided)
+         */
+        improvedBacktrackCounter++;
+        for (int row = 0; row < arraySize; row++){
+            for (int col = 0; col < arraySize; col++){
+                if (constrainedArray[row][col].getCellValue() == 0){
+                    Cage currentCage = cages.get(constrainedArray[row][col].getCellKey());
+                    if (currentCage.nearlyFilled()){
+                        ArrayList<Integer> list = new ArrayList<>();
+                        for (int j = 0; j < currentCage.getCageSize(); j++){
+                            list.add(currentCage.getCellIndex(j).getCellValue());
+                        }
+                        int divisor = gcd(list);
+                        boolean safeValueDivisor = safeValueCheck(divisor, row, col);
+                        for (int i = 1; i <= arraySize; i++) {
+                        if (safeValueCheck(i, row, col)){
+                            int assignedValue = (safeValueDivisor) ? divisor : i;
+                            safeValueDivisor = false; //If it doesn't work now, chances are it won't work in the future.
+                            constrainedArray[row][col].setCellValue(assignedValue);
+                            if (kenKenRegionFilled(row, col)){
+                                if (kenKenValid(row, col)) {
+                                    if (improvedBacktrackSolve()){
+                                        return true;
+                                    } else {
+                                        constrainedArray[row][col].setCellValue(0);
+                                    }
+                                } else {
+                                    constrainedArray[row][col].setCellValue(0);
+                                }
+                            }
+                            else {
+                                if (improvedBacktrackSolve()) {
+                                    return true;
+                                } else {
+                                    constrainedArray[row][col].setCellValue(0);
+                                }
+                            }
+                        }
+                    }}
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    private int gcd(int a, int b)
+    {
+        while (b > 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    private int gcd(ArrayList<Integer> input)
+    {
+        int result = input.get(0);
+        for(int i = 1; i < input.size(); i++)
+            result = gcd(result, input.get(i));
+        return result;
+    }
+
     public boolean simpleBacktrackSolve(){
+        simpleBacktrackCounter++;
         for (int row = 0; row < arraySize; row++){
             for (int col = 0; col < arraySize; col++){
                 if (constrainedArray[row][col].getCellValue() == 0){
@@ -45,8 +127,6 @@ public class KenKenSolver {
                         A) The current "cage" (I.e. collection of constraint cells) is filled with nonzero values
                         B) If the cage is filled, it conforms to the constraints of said cage (I.e, the operations
                         performed produce the value listed).
-                        If a significant amount of spaghetti code appears here that seemingly makes little to no
-                        logical/efficient sense, please forgive me.
                          */
                         if (safeValueCheck(i, row, col)){
                             constrainedArray[row][col].setCellValue(i);

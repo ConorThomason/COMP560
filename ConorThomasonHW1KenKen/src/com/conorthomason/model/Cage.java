@@ -14,6 +14,17 @@ public class Cage {
         return this.cageKey;
     }
 
+    public boolean nearlyFilled(){
+        for (int i = 0; i < cells.size(); i++){
+            if (cells.get(i).getCellValue() == 0) {
+                if (i == cells.size() - 1){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public ConstraintCell getCellIndex(int index){
         return cells.get(index);
     }
