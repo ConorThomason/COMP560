@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="00f79fb6-7569-43e0-8d3c-bd437a28ebb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Cage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Cage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Cage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Cage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -152,7 +152,8 @@
       <workItem from="1568904937102" duration="1140000" />
       <workItem from="1568939703732" duration="1532000" />
       <workItem from="1568941858995" duration="4791000" />
-      <workItem from="1568947372064" duration="2802000" />
+      <workItem from="1568947372064" duration="3571000" />
+      <workItem from="1568994662065" duration="13228000" />
     </task>
     <servers />
   </component>

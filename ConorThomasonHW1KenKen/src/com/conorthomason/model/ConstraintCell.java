@@ -7,12 +7,19 @@ public class ConstraintCell {
     private ConstraintCell lowerCell;
     private char cellKey;
     private int cellValue;
+    private int cellCost;
 
     public ConstraintCell (char cellKey){
         this.cellValue = 0;
         this.cellKey = cellKey;
     }
 
+    public int getCellCost(){
+        return this.cellCost;
+    }
+    public void setCellCost(int cellCost){
+        this.cellCost = cellCost;
+    }
     public char getCellKey(){
         return this.cellKey;
     }

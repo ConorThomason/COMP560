@@ -1,7 +1,9 @@
 package com.conorthomason.model;
 
-import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class KenKenSolver {
     private ConstraintCell constrainedArray[][];
@@ -18,7 +20,8 @@ public class KenKenSolver {
         this.cages = cages;
         arraySize = constrainedArray.length;
     }
-    public KenKenSolver(){
+
+    public KenKenSolver() {
         //nop
         //testing only
     }
@@ -33,10 +36,20 @@ public class KenKenSolver {
             return constrainedArray; //If it returns false, that means no solution was found.
         }
          */
-
+        /*
         if (improvedBacktrackSolve()) {
             System.out.println("\nFull Solution");
             System.out.println(improvedBacktrackCounter);
+            return constrainedArray;
+        }
+        else {
+            System.out.println("\nIncomplete Solution/No Solution");
+            return constrainedArray; //If it returns false, that means no solution was found.
+        }
+         */
+        if (localSearch()) {
+            System.out.println("\nFull Solution");
+            System.out.println(localCounter);
             return constrainedArray;
         }
         else {
@@ -64,30 +77,30 @@ public class KenKenSolver {
                         int divisor = gcd(list);
                         boolean safeValueDivisor = safeValueCheck(divisor, row, col);
                         for (int i = 1; i <= arraySize; i++) {
-                        if (safeValueCheck(i, row, col)){
-                            int assignedValue = (safeValueDivisor) ? divisor : i;
-                            safeValueDivisor = false; //If it doesn't work now, chances are it won't work in the future.
-                            constrainedArray[row][col].setCellValue(assignedValue);
-                            if (kenKenRegionFilled(row, col)){
-                                if (kenKenValid(row, col)) {
-                                    if (improvedBacktrackSolve()){
+                            if (safeValueCheck(i, row, col)){
+                                int assignedValue = (safeValueDivisor) ? divisor : i;
+                                safeValueDivisor = false; //If it doesn't work now, chances are it won't work in the future.
+                                constrainedArray[row][col].setCellValue(assignedValue);
+                                if (kenKenRegionFilled(row, col)){
+                                    if (kenKenValid(row, col)) {
+                                        if (improvedBacktrackSolve()){
+                                            return true;
+                                        } else {
+                                            constrainedArray[row][col].setCellValue(0);
+                                        }
+                                    } else {
+                                        constrainedArray[row][col].setCellValue(0);
+                                    }
+                                }
+                                else {
+                                    if (improvedBacktrackSolve()) {
                                         return true;
                                     } else {
                                         constrainedArray[row][col].setCellValue(0);
                                     }
-                                } else {
-                                    constrainedArray[row][col].setCellValue(0);
                                 }
                             }
-                            else {
-                                if (improvedBacktrackSolve()) {
-                                    return true;
-                                } else {
-                                    constrainedArray[row][col].setCellValue(0);
-                                }
-                            }
-                        }
-                    }}
+                        }}
                     return false;
                 }
             }
@@ -111,7 +124,6 @@ public class KenKenSolver {
             result = gcd(result, input.get(i));
         return result;
     }
-
     public boolean simpleBacktrackSolve(){
         simpleBacktrackCounter++;
         for (int row = 0; row < arraySize; row++){
@@ -157,6 +169,106 @@ public class KenKenSolver {
         return true;
     }
 
+    public boolean localSearch(){
+        final boolean[] timeEnd = {false};
+        Runnable runnable = new Runnable(){
+            public void run(){
+                long start = System.currentTimeMillis();
+                long end = start + 20*1000; //Provided with 20 seconds to find a solution
+                while (System.currentTimeMillis() < end)
+                {
+                    //running the loop
+                }
+                timeEnd[0] = true;
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+        //Fill the array with random values, ensuring that they are not used more than 9 times for each possible value
+        while (!timeEnd[0]) {
+            int skipValue = 0;
+            ArrayList<Integer> values = new ArrayList<>();
+            for (int i = 0; i < arraySize; i++){
+                for (int j = 1; j <= arraySize; j++){
+                    values.add(j);
+                }
+            }
+
+            //Assigns costs to each cell depending on their situation
+            for (int i = 0; i < arraySize; i++){
+                for (int j = 0; j < arraySize; j++){
+                    ConstraintCell workingCell = constrainedArray[i][j];
+                    if (!safeRow(i, workingCell.getCellValue())){
+                        workingCell.setCellValue(workingCell.getCellValue() + 1);
+                    }
+                    if (!safeColumn(j, workingCell.getCellValue())){
+                        workingCell.setCellValue(workingCell.getCellValue() + 1);
+                    }
+                    if (!kenKenValid(i, j)){
+                        workingCell.setCellValue(workingCell.getCellValue() + 1);
+                    }
+                }
+            }
+            Collections.shuffle(values);
+            for (int i = 0; i < arraySize; i++){
+                for (int j = 0; j < arraySize; j++){
+                    constrainedArray[i][j].setCellValue(values.get(j + skipValue));
+                }
+                skipValue += arraySize;
+            }
+            while (!timeEnd[0]){
+                if (stoppingCriterion()){
+                    return true;
+                }
+
+                //This is where the cost of each of the cells needs to come into play
+            /*
+            Provided any cell, a complete search of the board is done, determining what two values would be
+            best to switch. The cost is assigned based off a tally system - 1 pt for incorrect row, 1 pt for incorrect
+            column, 1 pt for incorrect KenKen (weightings may change). These costs are assigned after they are
+            randomly set, so a full analysis can be made of their impact.
+             */
+                else {
+
+                }
+            }
+
+        }
+        return false;
+    }
+
+    private void comparativeSwapping(ConstraintCell cell1, ConstraintCell cell2){
+
+    }
+    private boolean stoppingCriterion(){
+
+        //Checks to make sure each column/row has a unique set of numbers
+        for (int i = 0; i < arraySize; i++){
+            for (int j = 0; j < arraySize; j++){
+                for (int k = j + 1; k < arraySize; k++){
+                    if (constrainedArray[i][j].getCellValue() == constrainedArray[i][k].getCellValue()){
+                        return false;
+                    }
+                }
+            }
+        }
+
+        //Checks KenKen requirements
+        for (Map.Entry<Character, Cage> entry : cages.entrySet()) {
+            Cage cage = entry.getValue();
+            if (!cage.filledCage()){
+                return false;
+            }
+            for (int i = 0; i < cage.getCageSize(); i++){
+                if (!kenKenValid(entry.getValue(),
+                        constraints.get(cage.getCageKey()).getOperator(),
+                        constraints.get(cage.getCageKey()).getValue())){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     private boolean safeRow(int row, int value){
         for (int i = 0; i < arraySize; i++) {
             if (constrainedArray[row][i].getCellValue() == value) {
