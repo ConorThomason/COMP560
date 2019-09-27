@@ -36,14 +36,14 @@ public class DataFileImporter {
                     if (cages.get(newCell.getCellKey()) == null)
                         cages.put(newCell.getCellKey(), new Cage(newCell.getCellKey()));
                     cages.get(newCell.getCellKey()).addToCage(newCell);
-                    if (adjacentCellCheck(i+1, j))
-                        newCell.setRightCell(constrainedArray[i+1][j]);
-                    if (adjacentCellCheck(i - 1, j))
-                        newCell.setLeftCell(constrainedArray[i-1][j]);
                     if (adjacentCellCheck(i, j+1))
-                        newCell.setLowerCell(constrainedArray[i][j+1]);
-                    if (adjacentCellCheck(i, j-1))
-                        newCell.setUpperCell(constrainedArray[i][j-1]);
+                        newCell.setRightCell(constrainedArray[i][j+1]);
+                    if (adjacentCellCheck(i, j - 1))
+                        newCell.setLeftCell(constrainedArray[i][j-1]);
+                    if (adjacentCellCheck(i + 1, j))
+                        newCell.setLowerCell(constrainedArray[i+1][j]);
+                    if (adjacentCellCheck(i - 1, j))
+                        newCell.setUpperCell(constrainedArray[i-1][j]);
                     constrainedArray[i][j] = newCell;
                 }
             }
@@ -53,6 +53,7 @@ public class DataFileImporter {
             //Either non-existent or incorrect bounds provided
         }
         try {
+            char operator;
             Utils.printConstrainedKeys(constrainedArray);
             while (input.hasNext()) {
                 String currentLine = input.next();
@@ -69,7 +70,11 @@ public class DataFileImporter {
                 pattern = Pattern.compile("[\\/\\+\\-\\*]");
                 matcher = pattern.matcher(currentLine);
                 matcher.find();
-                char operator = matcher.group(0).charAt(0);
+                try {
+                    operator = matcher.group(0).charAt(0);
+                } catch (IllegalStateException e){
+                    operator = '+';
+                }
 
                 SolutionConstraint currentConstraint = new SolutionConstraint(key, value, operator);
                 constraints.put(key, currentConstraint);

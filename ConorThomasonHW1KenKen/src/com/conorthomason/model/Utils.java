@@ -19,5 +19,14 @@ public class Utils {
         }
         System.out.println();
     }
+    public static void printConstrainedCosts(ConstraintCell[][] constraintArray) {
+        for (int i = 0; i < constraintArray.length; i++) {
+            for (int j = 0; j < constraintArray.length; j++) {
+                System.out.print(constraintArray[i][j].getCellCost() + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 
 }

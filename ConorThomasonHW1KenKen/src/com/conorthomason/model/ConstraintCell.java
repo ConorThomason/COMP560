@@ -1,51 +1,13 @@
 package com.conorthomason.model;
 
 public class ConstraintCell {
-    private ConstraintCell upperCell;
-    private ConstraintCell leftCell;
-    private ConstraintCell rightCell;
-    private ConstraintCell lowerCell;
     private char cellKey;
     private int cellValue;
     private int cellCost;
-
-    public ConstraintCell (char cellKey){
-        this.cellValue = 0;
-        this.cellKey = cellKey;
-    }
-
-    public int getCellCost(){
-        return this.cellCost;
-    }
-    public void setCellCost(int cellCost){
-        this.cellCost = cellCost;
-    }
-    public char getCellKey(){
-        return this.cellKey;
-    }
-
-    public int getCellValue(){
-        return this.cellValue;
-    }
-
-    public void setCellValue(int cellValue){
-        this.cellValue = cellValue;
-    }
-
-    public boolean hasAdjacent(){
-        return (upperCell != null || leftCell != null || rightCell != null || lowerCell != null);
-    }
-
-    public void setCellValue(char cellValue){
-        this.cellValue = cellValue;
-    }
-    public ConstraintCell getUpperCell() {
-        return upperCell;
-    }
-
-    public void setUpperCell(ConstraintCell upperCell) {
-        this.upperCell = upperCell;
-    }
+    private ConstraintCell leftCell;
+    private ConstraintCell rightCell;
+    private ConstraintCell upperCell;
+    private ConstraintCell lowerCell;
 
     public ConstraintCell getLeftCell() {
         return leftCell;
@@ -63,12 +25,51 @@ public class ConstraintCell {
         this.rightCell = rightCell;
     }
 
+    public ConstraintCell getUpperCell() {
+        return upperCell;
+    }
+
+    public void setUpperCell(ConstraintCell upperCell) {
+        this.upperCell = upperCell;
+    }
+
     public ConstraintCell getLowerCell() {
         return lowerCell;
     }
 
     public void setLowerCell(ConstraintCell lowerCell) {
         this.lowerCell = lowerCell;
+    }
+
+    public ConstraintCell (char cellKey){
+        this.cellValue = 0;
+        this.cellKey = cellKey;
+    }
+
+    public int getCellCost(){
+        return this.cellCost;
+    }
+    public void setCellCost(int cellCost){
+        this.cellCost = cellCost;
+    }
+    public char getCellKey(){
+        return this.cellKey;
+    }
+
+    public void setCellKey(char cellKey){
+        this.cellKey = cellKey;
+    }
+    public int getCellValue(){
+        return this.cellValue;
+    }
+
+    public void setCellValue(int cellValue){
+        this.cellValue = cellValue;
+    }
+
+
+    public void setCellValue(char cellValue){
+        this.cellValue = cellValue;
     }
 
     @Override
