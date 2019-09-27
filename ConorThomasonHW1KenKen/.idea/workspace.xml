@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Main" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="00f79fb6-7569-43e0-8d3c-bd437a28ebb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/Data" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/Data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/OriginalData" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/ConstraintCell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/DataFileImporter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/KenKenSolver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConorThomasonHW1KenKen/com/conorthomason/model/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data" beforeDir="false" afterPath="$PROJECT_DIR$/src/9x9Data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OriginalData" beforeDir="false" afterPath="$PROJECT_DIR$/src/6x6Data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/ConstraintCell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/DataFileImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/model/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/conorthomason/tests/KenKenSolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/conorthomason/tests/KenKenSolverTests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,9 +74,9 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
@@ -165,7 +164,8 @@
       <workItem from="1568947372064" duration="3571000" />
       <workItem from="1568994662065" duration="13228000" />
       <workItem from="1569361781890" duration="140000" />
-      <workItem from="1569536181222" duration="18213000" />
+      <workItem from="1569536181222" duration="23745000" />
+      <workItem from="1569595012022" duration="8493000" />
     </task>
     <servers />
   </component>
@@ -184,20 +184,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/conorthomason/model/KenKenSolver.java</url>
-          <line>29</line>
-          <properties class="com.conorthomason.model.KenKenSolver" method="solveKenKen">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ConorThomasonHW1KenKen$Main.ic" NAME="Main Coverage Results" MODIFIED="1568694125015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

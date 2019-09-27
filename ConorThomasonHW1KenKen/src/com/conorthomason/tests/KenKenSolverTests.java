@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class KenKenSolverTests {
     @Test
+    //Tests
     public void kenKenCheckTest(){
         KenKenSolver solver = new KenKenSolver();
         ConstraintCell a1 = new ConstraintCell('A');

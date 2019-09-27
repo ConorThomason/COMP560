@@ -2,6 +2,8 @@ package com.conorthomason.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,7 +16,6 @@ public class DataFileImporter {
     private ConstraintCell constrainedArray[][];
     private TreeMap<Character, SolutionConstraint> constraints;
     private TreeMap<Character, Cage> cages;
-
     public DataFileImporter() throws FileNotFoundException {
         constraints = new TreeMap();
         cages = new TreeMap();
@@ -25,7 +26,9 @@ public class DataFileImporter {
         return this.cages;
     }
     public void importData() throws FileNotFoundException {
-        Scanner input = new Scanner(new File("src/Data"));
+        InputStream inputStream = Main.class.getResourceAsStream("/Data");
+        InputStreamReader inputReader = new InputStreamReader(inputStream);
+        Scanner input = new Scanner(inputReader);
         int arraySize = Integer.parseInt(input.nextLine());
         constrainedArray = new ConstraintCell[arraySize][arraySize];
         try {
@@ -36,14 +39,22 @@ public class DataFileImporter {
                     if (cages.get(newCell.getCellKey()) == null)
                         cages.put(newCell.getCellKey(), new Cage(newCell.getCellKey()));
                     cages.get(newCell.getCellKey()).addToCage(newCell);
-                    if (adjacentCellCheck(i, j+1))
-                        newCell.setRightCell(constrainedArray[i][j+1]);
-                    if (adjacentCellCheck(i, j - 1))
-                        newCell.setLeftCell(constrainedArray[i][j-1]);
-                    if (adjacentCellCheck(i + 1, j))
-                        newCell.setLowerCell(constrainedArray[i+1][j]);
-                    if (adjacentCellCheck(i - 1, j))
-                        newCell.setUpperCell(constrainedArray[i-1][j]);
+                    if (adjacentCellCheck(i, j+1)) {
+                        newCell.setRightCell(constrainedArray[i][j + 1]);
+                        newCell.getRightCell().setLeftCell(newCell);
+                    }
+                    if (adjacentCellCheck(i, j - 1)) {
+                        newCell.setLeftCell(constrainedArray[i][j - 1]);
+                        newCell.getLeftCell().setRightCell(newCell);
+                    }
+                    if (adjacentCellCheck(i + 1, j)) {
+                        newCell.setLowerCell(constrainedArray[i + 1][j]);
+                        newCell.getLowerCell().setUpperCell(newCell);
+                    }
+                    if (adjacentCellCheck(i - 1, j)) {
+                        newCell.setUpperCell(constrainedArray[i - 1][j]);
+                        newCell.getUpperCell().setLowerCell(newCell);
+                    }
                     constrainedArray[i][j] = newCell;
                 }
             }

@@ -1,5 +1,7 @@
 package com.conorthomason.model;
 
+import java.util.ArrayList;
+
 public class ConstraintCell {
     private char cellKey;
     private int cellValue;
@@ -12,7 +14,27 @@ public class ConstraintCell {
     public ConstraintCell getLeftCell() {
         return leftCell;
     }
-
+    public ConstraintCell bestNodeNeighbor(){
+        ArrayList<ConstraintCell> cells = new ArrayList<>();
+        if (leftCell != null){
+            cells.add(leftCell);
+        }
+        if (rightCell != null){
+            cells.add(rightCell);
+        }
+        if (upperCell != null){
+            cells.add(upperCell);
+        }
+        if (lowerCell != null){
+            cells.add(lowerCell);
+        }
+        int lowestIndex = 0;
+        for (int i = 0; i < cells.size(); i++){
+                    if (cells.get(lowestIndex).getCellCost() > cells.get(i).getCellCost())
+                        lowestIndex = i;
+            }
+        return cells.get(lowestIndex);
+    }
     public void setLeftCell(ConstraintCell leftCell) {
         this.leftCell = leftCell;
     }
@@ -75,5 +97,16 @@ public class ConstraintCell {
     @Override
     public String toString() {
         return "" + cellValue;
+    }
+
+    public boolean equals(ConstraintCell cell){
+        if (this.cellValue == cellValue){
+            if (this.cellCost == cellCost){
+                if (this.cellKey == cellKey){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

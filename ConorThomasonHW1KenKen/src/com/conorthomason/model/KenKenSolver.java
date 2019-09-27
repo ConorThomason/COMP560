@@ -182,13 +182,21 @@ public class KenKenSolver {
 
     public boolean localSearch(){
         long start = System.currentTimeMillis();
-        long end = start + 20000; //Provided with 20 seconds to find a solution TODO
+        final int addedTime = 100000;
+        long end = start + addedTime; //Provided with 20 seconds to find a solution TODO
         resetArray();
         recreateArray();
+        int totalCost = Integer.MAX_VALUE; //Made it max value to make sure the loop doesn't stall if i set it to something too low
         //Fill the array with random values, ensuring that they are not used more than 9 times for each possible value
         while (System.currentTimeMillis() < end) {
             if (stoppingCriterion()){
                 return true;
+            }
+            Random random = new Random();
+            int randomTime = random.nextInt(addedTime);
+            if (System.currentTimeMillis() - start > randomTime){
+                randomTime = random.nextInt(addedTime);
+                recreateArray();
             }
             //This is where the cost of each of the cells needs to come into play
             /*
@@ -202,21 +210,38 @@ public class KenKenSolver {
                 for (int i = 0; i < arraySize; i++) {
                     for (int j = 0; j < arraySize; j++) {
                         try {
-                            swapCells(constrainedArray[i][j], determineBestCell(constrainedArray[i][j]));
+                            ConstraintCell bestCell = determineBestCell(constrainedArray[i][j]);
+                            swapCells(constrainedArray[i][j], bestCell);
                             localCounter++;
                             assignCosts();
+                            int newCost = totalCost();
+                            if (newCost > totalCost){
+                                swapCells(bestCell, constrainedArray[i][j]);
+                                assignCosts();
+                            }
+                            else
+                                totalCost = newCost;
+                            if (stoppingCriterion())
+                                return true;
+                            else
+                                continue;
                         } catch (NullPointerException e) {
                             continue;
                         }
 
                     }
+                    if (stoppingCriterion())
+                        return true;
                 }
             }
+            if (stoppingCriterion())
+                return true;
         }
         Utils.printConstrainedCosts(constrainedArray);
 
         return false;
     }
+
     private boolean localSearchRowSafe(int row, int value){
         boolean foundValue = false;
         ConstraintCell[] cells = constrainedArray[row];
@@ -239,18 +264,16 @@ public class KenKenSolver {
         return true;
         }
     private ConstraintCell determineBestCell(ConstraintCell node){
-            ConstraintCell upper = node.getUpperCell();
-            ConstraintCell lower = node.getLowerCell();
-            ConstraintCell left = node.getLeftCell();
-            ConstraintCell right = node.getRightCell();
-            ConstraintCell[] cells = {upper, lower, left, right};
-            int smallestIndex = 0;
-            for (int i = 1; i < cells.length; i++){
-                if (cells[smallestIndex].getCellCost() > cells[i].getCellCost())
-                    smallestIndex = i;
+        return node.bestNodeNeighbor();
+    }
+    private int totalCost(){
+        int totalCost = 0;
+        for (int i = 0; i < arraySize; i++){
+            for (int j = 0; j < arraySize; j++){
+                totalCost += constrainedArray[i][j].getCellCost();
             }
-            return cells[smallestIndex];
-
+        }
+        return totalCost;
     }
     private void recreateArray(){
         ArrayList<Integer> values = new ArrayList<>();
@@ -287,15 +310,55 @@ public class KenKenSolver {
         }
     }
     private void swapCells(ConstraintCell cell1, ConstraintCell cell2) throws NullPointerException{
+        //System.out.println("Swapping: " + cell1.toString() + " and " + cell2.toString());
         int value = cell1.getCellValue();
         char key = cell1.getCellKey();
         int cost = cell1.getCellCost();
+
+        //Swaps all of the easy values.
         cell1.setCellValue(cell2.getCellValue());
         cell1.setCellKey(cell2.getCellKey());
         cell1.setCellValue(cell2.getCellValue());
         cell2.setCellValue(value);
         cell2.setCellKey(key);
         cell2.setCellCost(cost);
+
+
+        //Start reevaluating positions
+        if (cell1.getLeftCell() != null && cell1.getLeftCell() != cell2){
+            cell2.setLeftCell(cell1.getLeftCell());
+            cell1.getLeftCell().setRightCell(cell2);
+        }
+        if (cell1.getUpperCell() != null && cell1.getUpperCell() != cell2){
+            cell2.setUpperCell(cell1.getUpperCell());
+            cell1.getUpperCell().setLowerCell(cell2);
+        }
+        if (cell1.getLowerCell() != null && cell1.getLowerCell() != cell2){
+            cell2.setLowerCell(cell1.getLowerCell());
+            cell1.getLowerCell().setUpperCell(cell2);
+        }
+        if (cell1.getRightCell() != null && cell1.getRightCell() != cell2){
+            cell2.setRightCell(cell1.getRightCell());
+            cell1.getRightCell().setLeftCell(cell2);
+        }
+
+        if (cell2.getLeftCell() != null && cell2.getLeftCell() != cell1){
+            cell1.setLeftCell(cell2.getLeftCell());
+            cell2.getLeftCell().setRightCell(cell1);
+        }
+        if (cell2.getUpperCell() != null && cell2.getUpperCell() != cell1){
+            cell1.setUpperCell(cell2.getUpperCell());
+            cell2.getUpperCell().setLowerCell(cell1);
+        }
+        if (cell2.getLowerCell() != null && cell2.getLowerCell() != cell1){
+            cell1.setLowerCell(cell2.getLowerCell());
+            cell2.getLowerCell().setUpperCell(cell1);
+        }
+        if (cell2.getRightCell() != null && cell2.getRightCell() != cell1){
+            cell1.setLowerCell(cell2.getRightCell());
+            cell2.getRightCell().setLeftCell(cell1);
+        }
+
     }
     private void swapCellsOfCost(int cost){
         for (int i = 0; i < arraySize; i++){
