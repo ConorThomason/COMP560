@@ -30,9 +30,8 @@ public class KenKenSolver {
     public ConstraintCell[][] solveKenKen() {
 
         if (simpleBacktrackSolve()) {
-            System.out.println("\nFull Solution");
-            System.out.println(simpleBacktrackCounter);
             Utils.printConstrainedArray(constrainedArray);
+            System.out.println(simpleBacktrackCounter);
             resetArray();
         }
         else {
@@ -42,9 +41,7 @@ public class KenKenSolver {
 
 
         if (improvedBacktrackSolve()) {
-            System.out.println("\nFull Solution");
             System.out.println(improvedBacktrackCounter);
-            Utils.printConstrainedArray(constrainedArray);
         }
         else {
             System.out.println("\nIncomplete Solution/No Solution");
@@ -183,7 +180,7 @@ public class KenKenSolver {
     public boolean localSearch(){
         long start = System.currentTimeMillis();
         final int addedTime = 100000;
-        long end = start + addedTime; //Provided with 20 seconds to find a solution TODO
+        long end = start + addedTime; //Provided with 100 seconds to find a solution
         resetArray();
         recreateArray();
         int totalCost = Integer.MAX_VALUE; //Made it max value to make sure the loop doesn't stall if i set it to something too low

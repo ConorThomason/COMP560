@@ -65,7 +65,6 @@ public class DataFileImporter {
         }
         try {
             char operator;
-            Utils.printConstrainedKeys(constrainedArray);
             while (input.hasNext()) {
                 String currentLine = input.next();
                 Pattern pattern = Pattern.compile("(?i)[A-Z]+");
@@ -92,7 +91,6 @@ public class DataFileImporter {
             }
         } catch (IndexOutOfBoundsException e){
         }
-        printTreeMap();
     }
     public boolean adjacentCellCheck(int i, int j){
         try{
