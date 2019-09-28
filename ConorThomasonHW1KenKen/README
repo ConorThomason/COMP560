@@ -1,0 +1,29 @@
+All code produced was tested and run through the latest version of OpenJDK
+as of 9/27/2019. (Java 11). While I see no reason why earlier versions
+of Java (to at least before Java 8) would not work, if any issues occur,
+this would be a good place to start. Please ensure OpenJDK or OracleJDK are used.
+
+The development of the assignment took place on Ubuntu 19.04 - Disco Dingo,
+through IntelliJ Idea Ultimate. Ideally rebuilding the project won't
+be necessary, but if it should become so, please let me know and I will be
+sure to take appropriate action.
+
+ONYEN: conorth
+
+Steps to run:
+As I recall you use a mac, ideally a bash terminal is available to you.
+Ensure that the jar file provided (Main.jar) as well as the data file of
+your choosing reside in the same directory. Please ensure the file is named
+"Data". No extension was used in the development of this assignment,
+so if any issues are encountered, please remove the extension.
+In a command line that makes use of java, enter the command as follows:
+
+java -jar Main.jar
+
+This should run the program in the command line, producing the output as requested.
+It is worth nothing that the local search is, admittedly, inefficient.
+The upper limit is 100 seconds, and I have verified that it is capable
+of producing a correct solution, and I have theorised why it is so slow
+in the submitted PDF report; if you feel the need to cancel the operation
+of the program, CTRL+C/CTRL+D should end execution sufficiently.
+
