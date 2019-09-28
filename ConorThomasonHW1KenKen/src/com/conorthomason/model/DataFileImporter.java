@@ -26,9 +26,9 @@ public class DataFileImporter {
         return this.cages;
     }
     public void importData() throws FileNotFoundException {
-        InputStream inputStream = Main.class.getResourceAsStream("/Data");
-        InputStreamReader inputReader = new InputStreamReader(inputStream);
-        Scanner input = new Scanner(inputReader);
+        String path = "./Data";
+        File file = new File(path);
+        Scanner input = new Scanner(file);
         int arraySize = Integer.parseInt(input.nextLine());
         constrainedArray = new ConstraintCell[arraySize][arraySize];
         try {
