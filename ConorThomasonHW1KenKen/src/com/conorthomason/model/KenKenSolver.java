@@ -28,7 +28,7 @@ public class KenKenSolver {
     }
 
     public ConstraintCell[][] solveKenKen() {
-
+        //Driver method for solving kenken.
         if (simpleBacktrackSolve()) {
             Utils.printConstrainedArray(constrainedArray);
             System.out.println(simpleBacktrackCounter);
@@ -60,6 +60,7 @@ public class KenKenSolver {
     }
 
     public void resetArray(){
+        //Sets array to all zeroes; useful for running the solutions multiple times
         for (int i = 0; i < arraySize; i++){
             for (int j = 0; j < arraySize; j++){
                 constrainedArray[i][j].setCellValue(0);
